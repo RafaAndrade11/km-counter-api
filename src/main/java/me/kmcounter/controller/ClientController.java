@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import me.kmcounter.domain.model.Client;
 import me.kmcounter.dtos.client.ClientDataCreate;
 import me.kmcounter.service.client.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,7 +14,7 @@ import java.net.URI;
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
-
+    @Autowired
     private ClientService clientService;
 
     public ClientController(ClientService clientService) {

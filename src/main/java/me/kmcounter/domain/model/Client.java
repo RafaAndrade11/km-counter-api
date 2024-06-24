@@ -15,6 +15,8 @@ public class Client {
     @Column(length = 8, nullable = false)
     private String zipCode;
 
+    public Client() {
+    }
     public Client(ClientDataCreate data) {
         this.name = data.name();
         this.zipCode = data.zipCode();
