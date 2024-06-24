@@ -1,10 +1,10 @@
 # KM COUNTER API
 Java RESTful API criada para calculo de distância entre duas rotas. 
 
-##Diagrama de Classes
+## Diagrama de Classes
 
 ```mermaid
-classDiagram
+ classDiagram
     class Client {
         +String name
         +String zipcode
@@ -13,6 +13,7 @@ classDiagram
     class Route {
         +Client originClient
         +Client destinationClient
+        +Double distance
     }
 
     Route --> Client : originClient
