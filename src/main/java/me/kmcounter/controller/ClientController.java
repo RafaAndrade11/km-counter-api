@@ -2,7 +2,9 @@ package me.kmcounter.controller;
 
 import jakarta.transaction.Transactional;
 import me.kmcounter.domain.model.Client;
+import me.kmcounter.domain.repository.ClientRepository;
 import me.kmcounter.dtos.client.ClientDataCreate;
+import me.kmcounter.dtos.client.ClientDataUpdate;
 import me.kmcounter.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
+    @Transactional
     public ResponseEntity<Client> findById(@PathVariable Long id) {
         var user = clientService.findById(id);
         return ResponseEntity.ok(user);
@@ -38,5 +41,21 @@ public class ClientController {
         return ResponseEntity.ok(userCreated);
     }
 
+    @PutMapping
+    @Transactional
+    public ResponseEntity updateClient(@RequestBody ClientDataUpdate data) {
 
+        clientService.updateClient(data);
+
+        return ResponseEntity.ok("Client successfully updated!");
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deleteClientById(@PathVariable Long id) {
+        clientService.deleteClientById(id);
+
+        return ResponseEntity.noContent().build();
+
+    }
 }

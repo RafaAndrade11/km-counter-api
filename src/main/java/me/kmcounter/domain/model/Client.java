@@ -2,6 +2,7 @@ package me.kmcounter.domain.model;
 
 import jakarta.persistence.*;
 import me.kmcounter.dtos.client.ClientDataCreate;
+import me.kmcounter.dtos.client.ClientDataUpdate;
 
 @Entity(name = "tb_client")
 public class Client {
@@ -44,5 +45,14 @@ public class Client {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public void updateClientInfo(ClientDataUpdate data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+        if (data.zipCode() != null) {
+            this.zipCode = data.zipCode();
+        }
     }
 }

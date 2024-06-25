@@ -19,6 +19,10 @@ public class ClientServiceImpl implements ClientService {
         this.clientRepository = clientRepository;
     }
 
+    @Override
+    public Client findById(Long id) {
+        return clientRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
 
     @Override
     public Client createNewClient(ClientDataCreate dataClient) {
@@ -26,18 +30,20 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client findById(Long id) {
-        return clientRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    public void updateClient(ClientDataUpdate data) {
+
+        var clientToUpdate = clientRepository.getReferenceById(data.id());
+
+        clientToUpdate.updateClientInfo(data);
     }
+
+
 
     @Override
     public void deleteClientById(Long id) {
         clientRepository.deleteById(id);
     }
 
-    @Override
-    public void updateClient(ClientDataUpdate data) {
-       clientRepository.getReferenceById(data.id());
-    }
+
 }
 
