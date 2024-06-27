@@ -1,8 +1,7 @@
-package me.kmcounter.controller;
+package me.kmcounter.controllers;
 
 import jakarta.transaction.Transactional;
 import me.kmcounter.domain.model.Client;
-import me.kmcounter.domain.repository.ClientRepository;
 import me.kmcounter.dtos.client.ClientDataCreate;
 import me.kmcounter.dtos.client.ClientDataUpdate;
 import me.kmcounter.service.client.ClientService;
@@ -24,7 +23,6 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    @Transactional
     public ResponseEntity<Client> findById(@PathVariable Long id) {
         var user = clientService.findById(id);
         return ResponseEntity.ok(user);

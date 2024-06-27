@@ -12,7 +12,6 @@ import java.util.NoSuchElementException;
 
 @Service
 public class ClientServiceImpl implements ClientService {
-    @Autowired
     private ClientRepository clientRepository;
 
     public ClientServiceImpl(ClientRepository clientRepository) {

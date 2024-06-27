@@ -1,6 +1,7 @@
 package me.kmcounter.domain.model;
 
 import jakarta.persistence.*;
+import me.kmcounter.dtos.RouteDataCreate;
 
 @Entity(name = "tb_route")
 public class Route {
@@ -16,6 +17,15 @@ public class Route {
     private Client destinationClient;
 
     private Double distance;
+
+    public Route() {
+    }
+
+    public Route(RouteDataCreate dataRoute) {
+        this.originClient = dataRoute.originClient();
+        this.destinationClient = dataRoute.destinationClient();
+        this.distance = dataRoute.distance();
+    }
 
     public Long getId() {
         return id;
