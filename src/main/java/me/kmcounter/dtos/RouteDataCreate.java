@@ -5,7 +5,6 @@ import me.kmcounter.domain.model.Client;
 
 public record RouteDataCreate(
         Client originClient,
-        Client destinationClient,
-        Double distance
+        Client destinationClient
 ) {
 }

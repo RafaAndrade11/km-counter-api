@@ -18,13 +18,15 @@ public class Route {
 
     private Double distance;
 
-    public Route() {
+    public Route(Client originClient, Client destinationClient, double distance) {
+        this.originClient = originClient;
+        this.destinationClient = destinationClient;
+        this.distance = distance;
     }
 
-    public Route(RouteDataCreate dataRoute) {
-        this.originClient = dataRoute.originClient();
-        this.destinationClient = dataRoute.destinationClient();
-        this.distance = dataRoute.distance();
+    public Route(RouteDataCreate data) {
+        this.originClient = data.originClient();
+        this.destinationClient = data.destinationClient();
     }
 
     public Long getId() {
