@@ -1,7 +1,6 @@
 package me.kmcounter.controllers;
 
-import me.kmcounter.service.distance.GeocodingService;
-import me.kmcounter.service.distance.OpenRouteService;
+import me.kmcounter.service.distance.DistanceMatrixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,17 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class DistanceController {
 
     @Autowired
-    private GeocodingService geocodingService;
-
-    @Autowired
-    private OpenRouteService openRouteService;
+    private DistanceMatrixService distanceMatrixService;
 
     @GetMapping("/distance")
-    public double getDistance(@RequestParam String startCep, @RequestParam String endCep) {
+    public long getDistance(@RequestParam String origin, @RequestParam String destination) {
         try {
-            String startCoordinates = geocodingService.getCoordinatesFromCep(startCep);
-            String endCoordinates = geocodingService.getCoordinatesFromCep(endCep);
-            return openRouteService.getDistance(startCoordinates, endCoordinates);
+            return distanceMatrixService.getDistance(origin, destination);
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

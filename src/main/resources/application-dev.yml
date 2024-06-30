@@ -18,6 +18,6 @@ spring:
       settings:
         trace: false
         web-allow-others: false
-  openrouteservice:
-    api:
-      key: 5b3ce3597851110001cf62480865c9a6050f4f06af9fb9907917310d
+google:
+  api:
+    key: AIzaSyAxc805XUG7Cpi0PiKxh_CSposUIZZA5GA
