@@ -18,6 +18,9 @@ public class Route {
 
     private Double distance;
 
+    public Route() {
+    }
+
     public Route(Client originClient, Client destinationClient, double distance) {
         this.originClient = originClient;
         this.destinationClient = destinationClient;

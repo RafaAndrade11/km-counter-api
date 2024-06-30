@@ -6,7 +6,7 @@ import me.kmcounter.dtos.RouteDataUpdate;
 
 public interface RouteService {
 
-    Route createNewRoute (RouteDataCreate route);
+    Route createNewRoute (RouteDataCreate route) throws Exception;
 
     Route findById(Long id);
 

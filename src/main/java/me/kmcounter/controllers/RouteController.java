@@ -28,7 +28,7 @@ public class RouteController {
     }
 
     @PostMapping
-    public ResponseEntity<Route> createRoute(@RequestBody RouteDataCreate routeDataCreate) {
+    public ResponseEntity<Route> createRoute(@RequestBody RouteDataCreate routeDataCreate) throws Exception {
 
         routeService.createNewRoute(routeDataCreate);
 
