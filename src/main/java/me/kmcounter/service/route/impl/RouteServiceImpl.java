@@ -16,7 +16,6 @@ import java.util.NoSuchElementException;
 public class RouteServiceImpl implements RouteService {
     private final RouteRepository routeRepository;
     private final ClientRepository clientRepository;
-
     private final DistanceMatrixService distanceMatrixService;
 
     public RouteServiceImpl(RouteRepository routeRepository, ClientRepository clientRepository, DistanceMatrixService distanceMatrixService) {
