@@ -23,6 +23,11 @@ public class Client {
         this.zipCode = data.zipCode();
     }
 
+    public Client(String name, String zipCode) {
+        this.name = name;
+        this.zipCode = zipCode;
+    }
+
     public Long getId() {
         return id;
     }
