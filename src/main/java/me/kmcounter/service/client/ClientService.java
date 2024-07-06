@@ -3,6 +3,7 @@ package me.kmcounter.service.client;
 import me.kmcounter.domain.model.Client;
 import me.kmcounter.dtos.client.ClientDataCreate;
 import me.kmcounter.dtos.client.ClientDataUpdate;
+import org.springframework.stereotype.Service;
 
 public interface ClientService {
 

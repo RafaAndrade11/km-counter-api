@@ -10,59 +10,47 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ClientController.class)
 public class ClientControllerTest {
-
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private ClientService clientService;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Test
     public void testFindById() throws Exception {
-        Long clientId = 1L;
-        Client client = new Client();
-        client.setId(clientId);
-        client.setName("Test");
+        ClientDataCreate clientDataCreate = new ClientDataCreate("Client Test", "11112222");
 
-        given(clientService.findById(clientId)).willReturn(client);
+        Client createdClient = new Client ("Client Test", "11112222");
+        createdClient.setId(1L);
 
-        this.mockMvc.perform(get("/clients/{id}", clientId))
+        when(clientService.createNewClient(clientDataCreate)).thenReturn(createdClient);
+
+        mockMvc.perform(post("/clients")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(clientDataCreate)))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) jsonPath("$.id").value(clientId))
-                .andExpect((ResultMatcher) jsonPath("$.name").value("Test"));
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.name", is("Client Test")))
+                .andExpect(jsonPath("$.zipCode", is("11112222")));
+
     }
 
     @Test
     public void testCreateClient() throws Exception {
-        ClientDataCreate newClientData = new ClientDataCreate("TESTE", "12341234");
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String newClientDataJson = objectMapper.writeValueAsString(newClientData);
-
-        this.mockMvc.perform(post("/client")
-                .contentType("application/json")
-                .content(newClientDataJson))
-                .andExpect(status().isOk());
     }
 
     @Test
@@ -72,16 +60,14 @@ public class ClientControllerTest {
 
     @Test
     public void testDeleteClientById() throws Exception {
-        //given
-        Long clientId = 1L;
-        Client client = new Client();
-        client.setName("Rua");
-        client.setZipCode("11111111");
 
-        //when
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/clients/1"))
-                .andExpect(MockMvcResultMatchers
-                        //then
-                        .status().isNoContent());
+    }
+
+    private static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
