@@ -1,7 +1,7 @@
 package me.kmcounter.domain.model;
 
 import jakarta.persistence.*;
-import me.kmcounter.dtos.RouteDataCreate;
+import me.kmcounter.dtos.route.RouteDataCreate;
 
 @Entity(name = "tb_route")
 public class Route {

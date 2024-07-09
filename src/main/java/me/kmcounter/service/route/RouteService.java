@@ -1,8 +1,7 @@
 package me.kmcounter.service.route;
 
 import me.kmcounter.domain.model.Route;
-import me.kmcounter.dtos.RouteDataCreate;
-import me.kmcounter.dtos.RouteDataUpdate;
+import me.kmcounter.dtos.route.RouteDataCreate;
 
 public interface RouteService {
 

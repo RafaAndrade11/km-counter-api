@@ -1,15 +1,11 @@
 package me.kmcounter.controllers;
 
 import me.kmcounter.domain.model.Route;
-import me.kmcounter.dtos.RouteDataCreate;
+import me.kmcounter.dtos.route.RouteDataCreate;
 import me.kmcounter.service.route.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.awt.image.ReplicateScaleFilter;
-import java.net.URI;
 
 @RestController
 @RequestMapping("/routes")

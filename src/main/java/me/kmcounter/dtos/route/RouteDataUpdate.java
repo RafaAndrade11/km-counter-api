@@ -1,4 +1,4 @@
-package me.kmcounter.dtos;
+package me.kmcounter.dtos.route;
 
 public record RouteDataUpdate() {
 }
