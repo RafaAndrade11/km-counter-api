@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record ClientDataCreate(
-        @NotBlank String name,
-        @NotNull String zipCode
+        @NotBlank(message = "Name is mandatory!") String name,
+        @NotNull(message = "Zip Code cannot be null!") String zipCode
 ) {
 }

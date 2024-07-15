@@ -1,5 +1,6 @@
 package me.kmcounter.controllers;
 
+import jakarta.validation.Valid;
 import me.kmcounter.domain.model.Route;
 import me.kmcounter.dtos.route.RouteDataCreate;
 import me.kmcounter.service.route.RouteService;
@@ -24,7 +25,7 @@ public class RouteController {
     }
 
     @PostMapping
-    public ResponseEntity<Route> createRoute(@RequestBody RouteDataCreate routeDataCreate) throws Exception {
+    public ResponseEntity<Route> createRoute(@RequestBody @Valid RouteDataCreate routeDataCreate) throws Exception {
 
         routeService.createNewRoute(routeDataCreate);
 

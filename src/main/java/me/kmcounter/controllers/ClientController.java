@@ -1,6 +1,7 @@
 package me.kmcounter.controllers;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import me.kmcounter.domain.model.Client;
 import me.kmcounter.dtos.client.ClientDataCreate;
 import me.kmcounter.dtos.client.ClientDataUpdate;
@@ -29,7 +30,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody ClientDataCreate clientToCreate) {
+    public ResponseEntity<Client> createClient(@RequestBody @Valid ClientDataCreate clientToCreate) {
         var userCreated = clientService.createNewClient(clientToCreate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -50,7 +51,7 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteClientById(@PathVariable Long id) {
+    public ResponseEntity deleteClientById(@PathVariable @Valid Long id) {
         clientService.deleteClientById(id);
 
         return ResponseEntity.noContent().build();
