@@ -25,8 +25,8 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> findById(@PathVariable Long id) {
-        var user = clientService.findById(id);
-        return ResponseEntity.ok(user);
+            var user = clientService.findById(id);
+            return ResponseEntity.ok(user);
     }
 
     @PostMapping
