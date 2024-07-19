@@ -1,4 +1,4 @@
-package me.kmcounter.infra;
+package me.kmcounter.infra.exceptions;
 
 public class ClientNotFoundException extends RuntimeException{
     public ClientNotFoundException() {

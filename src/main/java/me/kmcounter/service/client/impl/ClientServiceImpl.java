@@ -4,12 +4,9 @@ import me.kmcounter.domain.model.Client;
 import me.kmcounter.domain.repository.ClientRepository;
 import me.kmcounter.dtos.client.ClientDataUpdate;
 import me.kmcounter.dtos.client.ClientDataCreate;
-import me.kmcounter.infra.ClientNotFoundException;
+import me.kmcounter.infra.exceptions.ClientNotFoundException;
 import me.kmcounter.service.client.ClientService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Service
 public class ClientServiceImpl implements ClientService {
