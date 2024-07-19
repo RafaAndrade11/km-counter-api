@@ -7,7 +7,7 @@ Java RESTful API criada para calculo de distância entre duas rotas.
  classDiagram
     class Client {
         +String name
-        +String zipcode
+        +String zipCode
     }
 
     class Route {
