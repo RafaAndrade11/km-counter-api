@@ -5,6 +5,7 @@ import me.kmcounter.domain.repository.ClientRepository;
 import me.kmcounter.dtos.client.ClientDataCreate;
 import me.kmcounter.dtos.client.ClientDataUpdate;
 import me.kmcounter.infra.exceptions.ClientAlreadyExistsException;
+import me.kmcounter.infra.exceptions.ClientDeletionException;
 import me.kmcounter.infra.exceptions.ClientNotFoundException;
 import me.kmcounter.infra.exceptions.InvalidClientDataException;
 import me.kmcounter.service.client.ClientService;
@@ -42,6 +43,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteClientById(Long id) {
+        if (!clientRepository.existsById(id)) {
+            throw new ClientDeletionException();
+        }
         clientRepository.deleteById(id);
     }
 }

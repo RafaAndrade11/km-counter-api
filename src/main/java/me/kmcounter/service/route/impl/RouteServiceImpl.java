@@ -6,6 +6,7 @@ import me.kmcounter.domain.model.Route;
 import me.kmcounter.domain.repository.ClientRepository;
 import me.kmcounter.domain.repository.RouteRepository;
 import me.kmcounter.dtos.route.RouteDataCreate;
+import me.kmcounter.infra.exceptions.ClientAlreadyExistsException;
 import me.kmcounter.service.distance.DistanceMatrixService;
 import me.kmcounter.service.route.RouteService;
 import org.springframework.stereotype.Service;

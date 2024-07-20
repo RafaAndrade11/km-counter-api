@@ -4,6 +4,7 @@ import com.google.maps.DistanceMatrixApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.DistanceMatrixElementStatus;
+import me.kmcounter.infra.exceptions.DistanceCalculationException;
 import me.kmcounter.service.distance.DistanceMatrixService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class DistanceMatrixServiceImpl implements DistanceMatrixService {
             long distanceInMeters = result.rows[0].elements[0].distance.inMeters;
             return distanceInMeters / 1000;
         } else {
-            throw new Exception("Error calculating distance: " + result.rows[0].elements[0].status);
+            throw new DistanceCalculationException("Error calculating distance: " + result.rows[0].elements[0].status);
         }
     }
 }
