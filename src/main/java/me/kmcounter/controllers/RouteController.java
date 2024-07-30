@@ -23,7 +23,6 @@ public class RouteController {
 
         return ResponseEntity.ok(routeService.findById(id));
     }
-
     @PostMapping
     public ResponseEntity<Route> createRoute(@RequestBody @Valid RouteDataCreate routeDataCreate) throws Exception {
 
@@ -31,6 +30,11 @@ public class RouteController {
 
         return null;
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Route> deleteRouteById(@RequestBody Long id) throws Exception {
 
+        routeService.deleteRouteById(id);
 
+        return ResponseEntity.noContent().build();
+    }
 }
