@@ -21,3 +21,7 @@ spring:
 google:
   api:
     key: AIzaSyAxc805XUG7Cpi0PiKxh_CSposUIZZA5GA
+spring-doc:
+  pathsToMatch: /clients/** , /routes/**
+  swagger-ui:
+    use-root-path: true

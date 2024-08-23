@@ -1,5 +1,6 @@
 package me.kmcounter.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import me.kmcounter.domain.model.Route;
 import me.kmcounter.dtos.route.RouteDataCreate;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/routes")
+@Tag(name = "ROUTES", description = "Endpoint for managing routes.")
 public class RouteController {
     @Autowired
     private RouteService routeService;

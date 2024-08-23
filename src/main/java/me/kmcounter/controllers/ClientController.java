@@ -1,5 +1,6 @@
 package me.kmcounter.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import me.kmcounter.domain.model.Client;
@@ -15,6 +16,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/clients")
+@Tag(name = "CLIENTS", description = "Endpoint for managing clients.")
 public class ClientController {
     @Autowired
     private ClientService clientService;
